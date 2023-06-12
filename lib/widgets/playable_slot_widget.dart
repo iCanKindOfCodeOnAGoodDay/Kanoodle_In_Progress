@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multiplayer_game_for_sister/providers/gameplay_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../models/shape_color_model.dart';
 import '../models/shape_images_model.dart';
@@ -16,15 +17,18 @@ class WidgetPlayableSlot extends StatelessWidget {
 
   WidgetPlayableSlot({required this.color, required this.isTaken});
 
-  Opacity buildKey(String path) {
+  Opacity buildKey(String path, double height, double width) {
     return Opacity(
-      opacity: isTaken == false ? 0.12 : 1,
-      child: Container(
-        height: 40,
-        width: 40,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.contain, image: AssetImage('images/$path'))),
+      opacity: isTaken == false ? 1 : 1,
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.contain, image: AssetImage('images/$path'))),
+        ),
       ),
     );
   }
@@ -32,11 +36,20 @@ class WidgetPlayableSlot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isTaken == false) {
-      return buildKey('emptyBlackSlotWhiteFrameTilted.gif');
+      return buildKey(
+          // 'emptyBlackSlotWhiteFrameTilted.gif',
+          'cyberPunkIconsCombo.gif',
+          // 'marblesIconsCombo.gif',
+          context.watch<ShapeImagesModel>().heightOfGameBoardIcons,
+          context.watch<ShapeImagesModel>().widthOfGameBoardIcons);
     }
     for (int i = 0; i < 12; i++) {
       if (color == _shapeColors[i]) {
-        return buildKey(_shapePaths[i]);
+        return buildKey(
+            context.watch<ShapeImagesModel>().shapePaths[i],
+            // _shapePaths[i],
+            context.watch<ShapeImagesModel>().heightOfGameBoardIcons,
+            context.watch<ShapeImagesModel>().widthOfGameBoardIcons);
       }
     }
     return Icon(

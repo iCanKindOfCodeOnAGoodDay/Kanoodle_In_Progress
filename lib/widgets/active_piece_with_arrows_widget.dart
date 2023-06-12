@@ -65,8 +65,8 @@ class ActivePieceAndArrowsWidgets extends StatelessWidget {
                     context.read<GameplayProvider>().moveGamePiece('down');
                   }),
               Container(
-                height: 40,
-                width: 40,
+                height: 70,
+                width: 70,
               ),
             ],
           ),

@@ -84,9 +84,11 @@ class TitleBarWidget extends StatelessWidget {
                     LevelWidget(),
                     GestureDetector(
                         onTap: () {
-                          _shapeImagesModel.toggleIconsStyle();
+                          context
+                              .read<GameplayProvider>()
+                              .updateBackgroundColorTheme();
                         },
-                        child: Icon(Icons.swap_calls)),
+                        child: Icon(Icons.color_lens_outlined)),
                   ],
                 ),
                 GamePlayOptionsWidget(),

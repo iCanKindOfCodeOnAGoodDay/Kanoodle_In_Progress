@@ -12,7 +12,7 @@ class ShapeColorModel {
     Colors.pinkAccent,
     Colors.deepOrange,
     Colors.deepPurpleAccent,
-    Colors.white,
+    Colors.grey,
     Colors.purpleAccent,
     Colors.yellowAccent,
   ];

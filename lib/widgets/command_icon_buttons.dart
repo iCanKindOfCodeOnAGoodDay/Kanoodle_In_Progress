@@ -16,7 +16,7 @@ class WidgetCommandIconButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Opacity(
-        opacity: 0.8,
+        opacity: 1,
         child: Container(
           // height: 50,
           // width: 50.0,
@@ -30,7 +30,7 @@ class WidgetCommandIconButton extends StatelessWidget {
             opacity: 0.4,
             child: Icon(
               icon,
-              size: 40.0,
+              size: 70.0,
               color: _shapeColors[
                   context.watch<GameplayProvider>().indexOfGamePieceWeAreUsing],
             ),

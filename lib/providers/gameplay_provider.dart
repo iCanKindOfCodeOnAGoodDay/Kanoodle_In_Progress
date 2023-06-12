@@ -15,6 +15,50 @@ class GameplayProvider with ChangeNotifier {
   List<List<WidgetPlayableSlot>> playableSlotsOnEachRow =
       GameBoardModel().playableSlotsOnEachRow;
 
+  // Color _selectedBackgroundColor = Colors.black;
+  //
+  // Color get selectedBackgroundColor => _selectedBackgroundColor;
+
+  List<Color> availableBackgroundColors = [
+    Colors.white,
+    Colors.black,
+    Colors.yellow,
+    Colors.pink,
+  ];
+
+  int backgroundColorIndex = 0;
+
+  void updateBackgroundColorIndex3ToCurrentGamePiece() {
+    print('we dont needa this functionalitiy due to color scheme change');
+    // availableBackgroundColors = [
+    //   Colors.black,
+    //   Colors.white,
+    //   _shapeColors[indexOfGamePieceWeAreUsing],
+    // ];
+    // notifyListeners();
+  }
+
+  void updateBackgroundColorTheme() {
+    availableBackgroundColors = [
+      Colors.white,
+      Colors.black,
+      Colors.black87,
+
+      Colors.white,
+      Colors.white,
+      // Colors.yellow,
+      // Colors.pink,
+      // Colors.white,
+      // _shapeColors[indexOfGamePieceWeAreUsing],
+    ];
+    if (backgroundColorIndex < availableBackgroundColors.length - 1) {
+      backgroundColorIndex++;
+    } else {
+      backgroundColorIndex = 0;
+    }
+    notifyListeners();
+  }
+
   List<List<int>> locations = ShapeLocations().locations;
 
   final List<Color> _shapeColors = ShapeColorModel().shapeColors;
